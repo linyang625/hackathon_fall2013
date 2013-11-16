@@ -18,5 +18,11 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	protected void onPause() {
+		//TODO: tell the app what to do when the user is leaving/pausing the app.
+		//what gets saved? what would they want if they came back? what would they want
+		//after they quit and then come back to the app again?
+	}
 
 }
