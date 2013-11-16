@@ -1,28 +1,42 @@
 package com.example.taskshare;
 
-import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
+import android.content.Intent;
+import android.os.Bundle;
 
 public class MainActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash_screen);
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
-	protected void onPause() {
-		//TODO: tell the app what to do when the user is leaving/pausing the app.
-		//what gets saved? what would they want if they came back? what would they want
-		//after they quit and then come back to the app again?
-	}
-
+    
+        Thread background = new Thread() {
+            public void run() {
+                 
+                try {
+                    // Thread will sleep for 1 second
+                    sleep(5*1000);
+                     
+                    // After 1 second redirect to another intent
+                    Intent i=new Intent(getBaseContext(),MainScreen.class);
+                    startActivity(i);
+                     
+                    //Remove activity
+                    finish();
+                     
+                } catch (Exception e) {
+                 
+                }
+            }
+        };
+         
+        // start thread
+        background.start();
+     
 }
+
+
+
+} 
